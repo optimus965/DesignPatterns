@@ -12,14 +12,12 @@ package creationalDesignPatterns.singleTonPattern;
 public class SingleTonMain {
     public static void main(String[] args) {
         Runnable task = ()-> {
-            DoubleCheckSingleTon doubleCheckSingleTon = DoubleCheckSingleTon.noLockSingleTon();
+            DoubleCheckSingleTon doubleCheckSingleTon = DoubleCheckSingleTon.singleCheckSingleTon();
             System.out.println(Thread.currentThread().getName() + "-> instance: " + doubleCheckSingleTon.hashCode());
         };
-        for(int i =0;i < 100;i++) {
+        for(int i =0;i <= 50;i++) {
             Thread t= new Thread(task,"Thread:-" + i);
             t.start();
         }
-
     }
-
 }
